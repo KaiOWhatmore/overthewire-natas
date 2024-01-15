@@ -1,0 +1,26 @@
+<html>
+<head>
+<!-- This stuff in the header has nothing to do with the level -->
+<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
+<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+<script>var wechallinfo = { "level": "natas11", "pass": "1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg" };</script></head>
+
+<h1>natas11</h1>
+<div id="content">
+<body style="background: #ffffff;">
+Cookies are protected with XOR encryption<br/><br/>
+
+The password for natas12 is YWqo0pjpcXzSIl5NMAVxg12QxeC1w9QG<br>
+<form>
+Background color: <input name=bgcolor value="#ffffff">
+<input type=submit value="Set color">
+</form>
+
+<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+</div>
+</body>
+</html>
