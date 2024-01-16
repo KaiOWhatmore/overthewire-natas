@@ -11,6 +11,6 @@
 <body>
 <h1>natas5</h1>
 <div id="content">
-Access granted. The password for natas6 is fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR</div>
+Access disallowed. You are not logged in</div>
 </body>
 </html>

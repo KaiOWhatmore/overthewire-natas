@@ -55,7 +55,6 @@ def get_natas_credentials(level):
     """
     username, password, url, auth
     """
-    # or level >= len(config.PASSWORDS)
     if level < 0 or config.PASSWORDS.get(level - 1) is None:
         raise ValueError("Invalid level number")
 
