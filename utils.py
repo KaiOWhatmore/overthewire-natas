@@ -7,6 +7,15 @@ import config
 ASCII_CHARS = string.ascii_letters + string.digits
 
 
+def hex2str(h):
+    bytes_obj = bytes.fromhex(h)
+    return bytes_obj.decode()
+
+
+def str2hex(s):
+    return s.encode().hex()
+
+
 def is_file_missing_or_empty(file_path):
     """Check if file is empty by reading first character in it"""
     # if file doesn't exist or is empty, return True
@@ -52,20 +61,14 @@ def find_smallest_repeating_substring(s):
 
 
 def get_natas_credentials(level):
-    """
-    username, password, url, auth
-    """
+    """ url, auth """
     if level < 0 or config.PASSWORDS.get(level - 1) is None:
         raise ValueError("Invalid level number")
-
     username = f"natas{level}"
     url = config.BASE_URL.format(username=username)
-
     # the password for the current level was provided from the previous level
     if level > 0:
         level -= 1
     password = config.PASSWORDS.get(level)
-
     auth = (username, password)
-
-    return username, password, url, auth
+    return url, auth
